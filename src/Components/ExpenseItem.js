@@ -3,18 +3,15 @@ import ExpenseDate from "./ExpenseDate";
 import Card from "./Card";
 import "./ExpenseItem.css";
 function ExpenseItem(props){
-    const [isDeleted, setDeleted] = useState(false);
+    const [expense, exp] = useState(props.amount);
     let del = () =>{
-        setDeleted(true);
-    }
-    if(isDeleted){
-        return null;
-    }
+        exp("100$");
+    };
     return(
         <Card className="SmallBox">
             <ExpenseDate date = {props.date}/>
             <p className="title">{props.title}</p>
-            <Card className="amount">/-{props.amount}</Card>
+            <Card className="amount">{expense}</Card>
             <button onClick = {del}>Delete</button>
         </Card>
     );

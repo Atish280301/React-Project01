@@ -1,39 +1,30 @@
 import React, {useState} from 'react';
 function ExpenseForm(){
-    //Traditional Method Use for each input at a single point of time
-    // const [enteredTitle, SetEnteredTitle] = useState('');
-    // const [enteredAmount, SetEnteredAmount] = useState('');
-    // const [enteredDate, SetEnteredDate] = useState('');
-
-    //Alternative method use object and spread operator
-    const [userInput, SetUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    });
-
+    const [enteredTitle, SetEnteredTitle] = useState('');
+    const [enteredAmount, SetEnteredAmount] = useState('');
+    const [enteredDate, SetEnteredDate] = useState('');
+    // const [userInput, SetUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredAmount: '',
+    //     enteredDate: ''
+    // });
     const titleChangeHandler = (event) => {
-        //SetEnteredTitle(event.target.value);
-        SetUserInput({
-            ...userInput,
-            enteredTitle: event.target.value,
-        })
+        SetEnteredTitle(event.target.value);
+        //alternate version
+        // SetUserInput({
+        //     ...userInput,
+        //     enteredTitle: event.target.value,
+        // })
+        //Safe alternate version
+        // SetUserInput((prevState) => {
+        //     return {...prevState, enteredTitle: event.target.value};
+        // })
     };
-
     const amountChangeHandler = (event) => {
-        // SetEnteredAmount(event.target.value);
-        SetUserInput({
-            ...userInput,
-            enteredAmount: event.target.value,
-        })
+        SetEnteredAmount(event.target.value);
     }
-
     const dateChangeHandler = (event) =>{
-        // SetEnteredDate(event.target.value);
-        SetUserInput({
-            ...userInput,
-            enteredDate: event.target.value
-        })
+        SetEnteredDate(event.target.value);
     }
     return (
         <form>

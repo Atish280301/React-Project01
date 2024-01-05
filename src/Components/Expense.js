@@ -35,10 +35,6 @@ function Expense(props){
                 onChangeFilter={filterChnageHandler} 
             />
             {expensesContent}
-            {/*Below One Is ADV REACT ASS- 12*/}
-            {filteredExpenses.length === 1 && (
-        <p>Only a single expense here. Please add more...</p>
-      )}
         </Card>
     );
 }

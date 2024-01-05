@@ -55,6 +55,7 @@ function ExpenseForm(props){
             </div>
             <div>
                 <button type="submit">Submit Expense!</button>
+                <button type="button" onClick={props.onCancel}>Cancel!</button>
             </div>
         </form>
     );

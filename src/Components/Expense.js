@@ -14,7 +14,7 @@ function Expense(props){
             return Eexpense.date.getFullYear().toString() === filteredYear;
         }
     );
-    let expensesContent = <p>No Expense Found.</p>;
+    let expensesContent = <p>No Expense Here!</p>;
     if(filteredExpenses.length > 0){
         expensesContent = filteredExpenses.map( exp =>{
             return(
@@ -35,6 +35,10 @@ function Expense(props){
                 onChangeFilter={filterChnageHandler} 
             />
             {expensesContent}
+            {/*Below One Is ADV REACT ASS- 12*/}
+            {filteredExpenses.length === 1 && (
+        <p>Only a single expense here. Please add more...</p>
+      )}
         </Card>
     );
 }

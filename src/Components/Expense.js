@@ -8,13 +8,16 @@ function Expense(props){
     const filterChnageHandler = selectedYear => {
         setFilteredYear(selectedYear);
     }
+    //filter the expense according to the year
+    const filteredExpenses = props.expense.filter(
+        (Eexpense) => {
+            return Eexpense.date.getFullYear().toString() === filteredYear;
+        }
+    );
     return (
         <Card className="Big-Box">
             <ExpenseFilter selected = {filteredYear} onChangeFilter={filterChnageHandler} />
-            {props.expense.map( exp =>{
-                if(!exp.id){
-                    console.log("Expense Item has no id:",exp);
-                }
+            {filteredExpenses.map( exp =>{
                 return(
                     <ExpenseItem
                         key= {exp.id}

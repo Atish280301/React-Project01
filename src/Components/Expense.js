@@ -11,9 +11,20 @@ function Expense(props){
     return (
         <Card className="Big-Box">
             <ExpenseFilter selected = {filteredYear} onChangeFilter={filterChnageHandler} />
-            <ExpenseItem title = {props.expense[0].title} amount = {props.expense[0].amount} date = {props.expense[0].date}></ExpenseItem>
-            <ExpenseItem title = {props.expense[1].title} amount = {props.expense[1].amount} date = {props.expense[1].date}></ExpenseItem>
-            <ExpenseItem title = {props.expense[2].title} amount = {props.expense[2].amount} date = {props.expense[1].date}></ExpenseItem>
+            {props.expense.map( exp =>{
+                if(!exp.id){
+                    console.log("Expense Item has no id:",exp);
+                }
+                return(
+                    <ExpenseItem
+                        key= {exp.id}
+                        title={exp.title}
+                        amount={exp.amount}
+                        date={exp.date}
+                    />
+                );
+            }
+            )}
         </Card>
     );
 }

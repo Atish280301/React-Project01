@@ -1,8 +1,9 @@
-import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter";
 import "./Expense.css";
 import Card from "./Card";
 import { useState } from "react";
+import ExpensesList from "./ExpensesList";
+import ExpenseChart from "./ExpenseChart";
 function Expense(props){
     const [filteredYear, setFilteredYear] = useState('2020');
     const filterChnageHandler = selectedYear => {
@@ -14,27 +15,14 @@ function Expense(props){
             return Eexpense.date.getFullYear().toString() === filteredYear;
         }
     );
-    let expensesContent = <p>No Expense Here!</p>;
-    if(filteredExpenses.length > 0){
-        expensesContent = filteredExpenses.map( exp =>{
-            return(
-                <ExpenseItem
-                    key= {exp.id}
-                    title={exp.title}
-                    amount={exp.amount}
-                    date={exp.date}
-                />
-            );
-        }
-        )
-    }
     return (
         <Card className="Big-Box">
             <ExpenseFilter 
                 selected = {filteredYear} 
                 onChangeFilter={filterChnageHandler} 
             />
-            {expensesContent}
+            <ExpenseChart expenses = {filteredExpenses}  />
+            <ExpensesList items={filteredExpenses}/>
         </Card>
     );
 }

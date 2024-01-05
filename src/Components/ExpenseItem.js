@@ -8,12 +8,14 @@ function ExpenseItem(props){
         exp("100$");
     };
     return(
-        <Card className="SmallBox">
-            <ExpenseDate date = {props.date}/>
-            <p className="title">{props.title}</p>
-            <Card className="amount">{expense}</Card>
-            <button onClick = {del}>Delete</button>
-        </Card>
+        <li>
+            <Card className="SmallBox">
+                <ExpenseDate date = {props.date}/>
+                <p className="title">{props.title}</p>
+                <Card className="amount">{expense}</Card>
+                <button onClick = {del}>Delete</button>
+            </Card>
+        </li>
     );
 }
 export default ExpenseItem;
